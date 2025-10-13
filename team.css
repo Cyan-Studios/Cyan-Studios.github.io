@@ -78,7 +78,7 @@ body {
     width: 450px;
     height: 225px;
     border-radius: 20px;
-    background: url("https://framerusercontent.com/images/56gHAbMdMzsUcukD5qWTvdqIu8.png") center/cover no-repeat;
+    background: "./astro/astro_hi.gif" center/cover no-repeat;
     box-shadow: 0 0 25px rgba(57, 168, 125, 0.8);
     flex-shrink: 0;
     scale: 1;
@@ -264,3 +264,4 @@ body {
         text-align: center;
     }
 }
+
