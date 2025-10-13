@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cyan Studios</title>
+  <link rel="stylesheet" href="team.css" />
+</head>
+
+<body>
+  <!-- Space Canvas -->
+  <canvas id="space-bg"></canvas>
+
+  <!-- Profile Card -->
+  <div class="profile-card">
+    <div class="profile-img"></div>
+    <div class="profile-text">
+      <h1>Hi welcome to <span>Cyan Studios</span></h1>
+      <p>Where Planets and play collide!</p>
+      <a>Join Us:</a>
+      <div class="social-buttons">
+        <a href="https://discord.gg/Fmvtv7GT7v" target="_blank" class="button primary">Discord Server</a>
+        <a href="https://www.youtube.com/@ComingSoon-f6l" target="_blank" class="button secondary">PlanetMC</a>
+        <a href="index.html" class="button tridary"><- Back</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Team Members -->
+  <div class="team-members" id="team">
+    <h2>--:Our Team:--</h2>
+    <div class="team-columns" id="team-columns"></div>
+  </div>
+
+<script>
+const teamColumns = document.getElementById("team-columns");
+
+// --- Team Members ---
+const roleColors = {
+  "Owner": "#FFD700",
+  "Co Owner": "#FFA500",
+  "Manager": "#00FFFF",
+  "Head Builder": "#ADFF2F",
+  "Builder": "#00BFFF",
+  "Artist": "#FF69B4",
+  "Developer": "#9A86FD",
+  "Admin": "#721422"
+};
+
+async function loadTeam() {
+  try {
+    const res = await fetch("team.json");
+    if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
+    const teamData = await res.json();
+
+    teamData.sections.forEach(section => {
+      const categoryContainer = document.createElement("div");
+      categoryContainer.classList.add("team-category");
+
+      const label = document.createElement("h3");
+      label.textContent = section.name;
+      categoryContainer.appendChild(label);
+
+      const columnsContainer = document.createElement("div");
+      columnsContainer.style.display = "flex";
+      columnsContainer.style.gap = "10px";
+
+      for (let i = 0; i < section.members.length; i += 4) {
+        const column = document.createElement("div");
+        column.style.display = "flex";
+        column.style.flexDirection = "column";
+        column.style.gap = "8px";
+
+        const membersSlice = section.members.slice(i, i + 4);
+        membersSlice.forEach(member => {
+          const card = document.createElement("div");
+          card.classList.add("team-card");
+          card.setAttribute("data-category", member.role);
+
+          const color = roleColors[member.role] || "#FFFFFF";
+
+          card.innerHTML = `
+            <img src="${member.avatar}" alt="${member.global_name || member.username}">
+            <div class="team-name">${member.global_name || member.username}</div>
+            <div class="team-role" style="color:${color}">
+              <a href="https://discord.com/users/${member.id}" target="_blank" style="color:${color}; text-decoration:none;">
+                @${member.username}
+              </a>
+            </div>
+            <div class="team-role" style="color:${color}; font-size:0.75rem;">
+              ${member.role}
+            </div>
+          `;
+          column.appendChild(card);
+        });
+
+        columnsContainer.appendChild(column);
+      }
+
+      categoryContainer.appendChild(columnsContainer);
+      teamColumns.appendChild(categoryContainer);
+    });
+
+  } catch (err) {
+    console.error("Failed to load team.json:", err);
+    teamColumns.innerHTML = `<p style="color:red;">Failed to load team data. Make sure team.json is served via a server.</p>`;
+  }
+}
+
+loadTeam();
+
+// --- Space background ---
+const canvas = document.getElementById('space-bg');
+const ctx = canvas.getContext('2d');
+let stars = [];
+let driftingPlanets = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+// Create stars
+for (let i = 0; i < 100; i++) {
+  const img = new Image();
+  img.src = `images/star${(i % 2) + 1}.png`;
+  stars.push({
+    img: img,
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    size: 5 + Math.random() * 10,
+    dx: (Math.random() - 0.5) * 0.2,
+    dy: (Math.random() - 0.5) * 0.2
+  });
+}
+
+// Optional drifting extras (e.g., small planets)
+// Only drifting extras (small stars, asteroids, etc.)
+const driftingExtrasImages = ["star1.png","star2.png"];
+for (let i = 0; i < 20; i++) {
+  const img = new Image();
+  img.src = `images/${driftingExtrasImages[i % driftingExtrasImages.length]}`;
+  driftingPlanets.push({
+    img: img,
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    size: 5 + Math.random() * 15,
+    dx: (Math.random() - 0.5) * 0.2,
+    dy: (Math.random() - 0.5) * 0.2
+  });
+}
+
+// Orbit system: Sun, Earth, Moon
+const center = { x: canvas.width/2 - 720, y: canvas.height/2 - 125};
+
+// Sun
+const sun = {
+  img: new Image(),
+  size: 100,
+  x: center.x,
+  y: center.y,
+  dx: 0.02,
+  dy: 0.01
+};
+sun.img.src = "images/sun.png";
+
+// Earth orbiting Sun
+const earth = {
+  img: new Image(),
+  size: 60,
+  radius: 200,
+  angle: Math.random()*Math.PI*2,
+  speed: 0.0015
+};
+earth.img.src = "images/earth.png";
+
+// Moon orbiting Earth
+const moon = {
+  img: new Image(),
+  size: 20,
+  radius: 60,
+  angle: Math.random()*Math.PI*2,
+  speed: 0.005
+};
+moon.img.src = "images/moon.png";
+
+function animateSpace() {
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  // Stars
+  stars.forEach(s => {
+    ctx.drawImage(s.img, s.x, s.y, s.size, s.size);
+    s.x += s.dx;
+    s.y += s.dy;
+    if(s.x < -s.size) s.x = canvas.width;
+    if(s.x > canvas.width) s.x = -s.size;
+    if(s.y < -s.size) s.y = canvas.height;
+    if(s.y > canvas.height) s.y = -s.size;
+  });
+
+  // Drifting extras
+  driftingPlanets.forEach(p => {
+    ctx.drawImage(p.img, p.x, p.y, p.size, p.size);
+    p.x += p.dx; p.y += p.dy;
+    if(p.x < -p.size) p.x = canvas.width;
+    if(p.x > canvas.width) p.x = -p.size;
+    if(p.y < -p.size) p.y = canvas.height;
+    if(p.y > canvas.height) p.y = -p.size;
+  });
+
+  // Move Sun slightly
+  sun.x += sun.dx; sun.y += sun.dy;
+  if(sun.x < 50 || sun.x > canvas.width-50) sun.dx*=-1;
+  if(sun.y < 50 || sun.y > canvas.height-50) sun.dy*=-1;
+  ctx.drawImage(sun.img, sun.x-sun.size/2, sun.y-sun.size/2, sun.size, sun.size);
+
+  // Earth orbiting Sun
+  earth.angle += earth.speed;
+  const earthX = sun.x + earth.radius*Math.cos(earth.angle);
+  const earthY = sun.y + earth.radius*Math.sin(earth.angle);
+  ctx.drawImage(earth.img, earthX-earth.size/2, earthY-earth.size/2, earth.size, earth.size);
+
+  // Moon orbiting Earth
+  moon.angle += moon.speed;
+  const moonX = earthX + moon.radius*Math.cos(moon.angle);
+  const moonY = earthY + moon.radius*Math.sin(moon.angle);
+  ctx.drawImage(moon.img, moonX-moon.size/2, moonY-moon.size/2, moon.size, moon.size);
+
+  requestAnimationFrame(animateSpace);
+}
+
+animateSpace();
+</script>
+
+
+</body>
+
+</html>

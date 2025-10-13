@@ -1,9 +1,95 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cyan Studio</title>
+  <link rel="stylesheet" href="main.css">
+</head>
 <body>
 
-<h1>Cyan Studios</h1>
-<p>No Sneak peaks of website rn.</p>
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="logo"><span>🌊 Cyan Studio</span></div>
+    <div class="nav">
+      <a href="team.html">Team</a>
+      <a href="sneak.html">Sneak peaks</a>
+      <a href="#webmanager">Website Manager</a>
+    </div>
+  </div>
+
+  <!-- main -->
+  <section class="main">
+    <img src="./astro/astro_hi.gif" alt="Cyan Studio Logo">
+    <h1>Welcome to Cyan Studio</h1>
+    <p>
+      We’re a passionate team of developers and designers crafting unique digital experiences, servers, and creative tools for everyone.
+    </p>
+
+    <div class="social-links">
+      <a class="discord" href="https://discord.gg/Fmvtv7GT7v" target="_blank" rel="noopener noreferrer">Discord</a>
+    </div>
+  </section>
+
+  <!-- cards -->
+<section id="cards">
+  <div class="cards">
+
+    <!-- cards Card Template 1 -->
+    <div class="cards-card" onclick="location.href = 'team.html'">
+      <div class="cards-image">
+        <img src="https://cdn.discordapp.com/attachments/1373513787176386570/1424170489886281828/56gHAbMdMzsUcukD5qWTvdqIu8.png" alt="Team">
+        <div class="cards-subtitle">Team-Members</div>
+      </div>
+      <div class="cards-caption">
+        <h3>Meet The Team</h3>
+        <p>View the team members and what they do and Contact them</p>
+      </div>
+    </div>
+
+    <!-- cards Card Template 2 -->
+    <div class="cards-card" onclick="location.href = 'sneak.html'">
+      <div class="cards-image">
+        <img src="https://cdn.discordapp.com/attachments/1373513787176386570/1424170489886281828/56gHAbMdMzsUcukD5qWTvdqIu8.png" alt="Sneak Peaks">
+        <div class="cards-subtitle">Sneak Peaks View</div>
+      </div>
+      <div class="cards-caption">
+        <h3>Sneak Peaks</h3>
+        <p>Where you can see whats to come in the future of cyan studio / cyan games</p>
+      </div>
+    </div>
+
+    <!-- cards Card Template 3 (Empty template for easy duplication) -->
+    <div class="cards-card">
+      <div class="cards-image">
+        <img src="https://cdn.discordapp.com/attachments/1373513787176386570/1424170489886281828/56gHAbMdMzsUcukD5qWTvdqIu8.png" alt="Cyan Studios">
+        <div class="cards-subtitle">IDK GIVE ME SUM</div>
+      </div>
+      <div class="cards-caption">
+        <h3>Cyanwolf Give me sum</h3>
+        <p>I dont know what to put in this card i need you to tell me broooo.</p>
+      </div>
+    </div>
+    
+
+  </div>
+</section>
+
+  <!-- Website Manager -->
+  <section id="webmanager">
+    <div class="manager-card" style="background:linear-gradient(180deg, rgba(57,168,125,0.04), rgba(57,168,125,0.02)); text-align:center; flex-direction:column;">
+      <img src="https://cdn.discordapp.com/avatars/974645999568060457/7c6d5714db581ab6027e9632300b6c9b.webp?size=512" alt="DoubtedMango455">
+      <div class="manager-info">
+        <h3>DoubtedMango455 | Website Manager</h3>
+        <p>Hi! I'm DoubtedMango455, the website manager for Cyan Studio. I handle the site’s design, updates, and functionality.</p>
+        <a href="https://discord.com/users/974645999568060457" class="discord-btn" target="_blank">Message Me on Discord</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    🌊 Cyan Studio © 2025 – All rights reserved.
+  </footer>
 
 </body>
 </html>

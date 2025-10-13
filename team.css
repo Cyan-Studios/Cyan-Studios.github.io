@@ -1,0 +1,266 @@
+/* --- Fonts --- */
+@font-face {
+    font-family: 'Minecraft';
+    src: url('https://raw.githubusercontent.com/Minato-mba/Minato-mba.github.io/main/assets/fonts/minecraft.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Minecraft';
+    src: url('https://raw.githubusercontent.com/Minato-mba/Minato-mba.github.io/main/assets/fonts/minecraft-ten.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* --- Global --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Minecraft', Arial, sans-serif;
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+    min-height: 100vh;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+}
+
+:root {
+  --green: #39e3a0;
+  --green-light: #4fffc4;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 12px; }
+::-webkit-scrollbar-track { background: #1c221f; }
+::-webkit-scrollbar-thumb { background: var(--green); border-radius:6px; }
+::-webkit-scrollbar-thumb:hover { background: var(--green-light); }
+
+/* --- Background canvas --- */
+#space-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    background: black;
+}
+
+/* --- Profile card --- */
+.profile-card {
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto;
+    border-radius: 20px;
+    background: #1a1a1a;
+    padding: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.profile-card:hover {
+    transform: scale(1.01);
+    box-shadow: 0 0 40px rgba(57, 168, 125, 0.8);
+}
+
+.profile-img {
+    width: 450px;
+    height: 225px;
+    border-radius: 20px;
+    background: url("https://framerusercontent.com/images/56gHAbMdMzsUcukD5qWTvdqIu8.png") center/cover no-repeat;
+    box-shadow: 0 0 25px rgba(57, 168, 125, 0.8);
+    flex-shrink: 0;
+    scale: 1;
+}
+
+.profile-text {
+    max-width: 500px;
+    text-align: left;
+}
+
+.profile-text h1 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.profile-text h1 span {
+    background: linear-gradient(90deg, #39a87d, #1f5e46);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.profile-text p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #ffffff;
+} 
+
+.profile-text a {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.social-buttons {
+    display: flex;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.button {
+    font-family: 'Minecraft', sans-serif;
+    font-size: 28px;
+    padding: 0px 5px;
+    border-radius: 0 !important;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.05s ease-in-out;
+    scale: 1;
+}
+
+.button.primary {
+    background-color: #3c8527;
+    border: 3px solid #639d52;
+    color: white;
+    box-shadow: 0px 6px 0px #1d4d13, 0 0 0 3px #1a1a1b, 0 6px 0 3px #1a1a1b;
+}
+
+.button.primary:hover {
+    background-color: #2a641c;
+    border-color: #7fa277;
+}
+
+.button.primary:active {
+    box-shadow: 0 0 0 3px #1a1a1b;
+    transform: translateY(6px);
+}
+
+.button.secondary {
+    background-color: #d0d1d4;
+    color: #1a1a1b;
+    border: 3px solid #e1e1e4;
+    box-shadow: 0px 6px 0px #58585a, 0 0 0 3px #1a1a1b, 0 6px 0 3px #1a1a1b;
+}
+
+.button.secondary:hover {
+    background-color: #b1b2b5;
+    border-color: #f4f6f9;
+}
+
+.button.secondary:active {
+    box-shadow: 0 0 0 3px #1a1a1b;
+    transform: translateY(6px);
+}
+
+
+.button.tridary {
+    background-color: #237c66;
+    border: 3px solid #529d80;
+    color: white;
+    box-shadow: 0px 6px 0px #134d48, 0 0 0 3px #1a1a1b, 0 6px 0 3px #1a1a1b;
+}
+
+.button.tridary:hover {
+    background-color: #1c645a;
+    border-color: #77a295;
+}
+
+.button.tridary:active {
+    box-shadow: 0 0 0 3px #1a1a1b;
+    transform: translateY(6px);
+}
+
+
+/* --- Team Members --- */
+.team-members {
+    width: 90%;
+    max-width: 1200px;
+    margin: 50px auto;
+}
+
+.team-members h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #39a87d;
+    text-shadow: 1px 1px 0 #000;
+}
+
+.team-category {
+    margin-bottom: 40px;
+}
+
+.team-category h3 {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.team-columns {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.team-card {
+    width: 120px;
+    border-radius: 10px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-family: 'Minecraft', monospace;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    background-color: rgba(57, 168, 125, 0.452); /* green with 85% opacity */
+    border: 1px solid #39a87d;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+}
+
+.team-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 14px rgba(57, 168, 125, 0.9);
+}
+
+.team-card img {
+    width: 60px;
+    height: 60px;
+    border-radius: 4px;
+    object-fit: cover;
+    border: 2px solid #39a87d;
+    margin-bottom: 5px;
+}
+
+.team-name {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 2px;
+}
+
+.team-role {
+    font-size: 0.7rem;
+}
+
+@media (max-width: 900px) {
+    .profile-card {
+        flex-direction: column;
+    }
+    .profile-img,
+    .profile-text {
+        width: 90%;
+        text-align: center;
+    }
+}
