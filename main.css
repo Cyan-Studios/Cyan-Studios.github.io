@@ -5,9 +5,9 @@ html {
 }
 
 section {
-  position: relative;
-  z-index: 1;
   padding: clamp(60px, 10vw, 120px) clamp(20px, 5vw, 60px);
+  max-width: 1200px;
+  margin: auto;
 }
 
 :root{
@@ -148,9 +148,11 @@ section {
   display: flex;
   flex-wrap: wrap;
   gap: clamp(30px, 3vw, 40px);
-  padding: 0 20px;
+  padding: 0;
   justify-content: center;
   margin-top: 40px;
+  width: fit-content;
+  margin: 0 auto;
 }
 
 .cards-card {
@@ -351,10 +353,9 @@ footer{
 
 /* Overlapping cards section */
 #cards {
-  display: flex;
   flex-wrap: wrap;
   position: relative;
   z-index: 2;
-  margin-top: -10vw; /* scale overlap based on screen width */
-  padding-top: 5vw;  /* gives breathing space inside the section */
+  margin-top: -10vw;
+  padding-top: 5vw;
 }
