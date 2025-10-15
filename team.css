@@ -32,6 +32,7 @@ body {
 :root {
   --green: #39e3a0;
   --green-light: #4fffc4;
+  --space: clamp(20px, 5vw, 80px);
 }
 
 /* Scrollbar */
@@ -56,13 +57,13 @@ body {
 .profile-card {
     width: 90%;
     max-width: 1000px;
-    margin: 40px auto;
+    margin: var(--space) auto;
     border-radius: 20px;
     background: #1a1a1a;
-    padding: 30px;
+    padding: var(--space);
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
+    gap: calc(var(--space) / 1.5);
     align-items: center;
     justify-content: center;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
@@ -208,10 +209,11 @@ body {
 }
 
 .team-columns {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  gap: calc(var(--space) / 2);
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px 0; /* optional: space around group */
 }
 
 .team-card {
@@ -235,8 +237,8 @@ body {
 }
 
 .team-card img {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     border-radius: 4px;
     object-fit: cover;
     border: 2px solid #39a87d;
@@ -264,6 +266,3 @@ body {
         text-align: center;
     }
 }
-
-
-
