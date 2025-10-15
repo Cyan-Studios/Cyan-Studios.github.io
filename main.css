@@ -145,18 +145,19 @@ section {
 
 /* cards container */
 #cards .cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: clamp(30px, 3vw, 40px);
-  padding: 0;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: clamp(20px, 2vw, 40px); /* responsive gap */
+  justify-items: center; /* center cards in each column */
+  width: 100%;
+  padding: 0 20px;
   margin-top: 40px;
-  width: fit-content;
-  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .cards-card {
-  width: 300px;
+  width: auto;
+  height: auto; /* let content decide height */
   border: 3.5px solid #007045;  /* outer gray block border */
   display: flex;
   flex-direction: column;
