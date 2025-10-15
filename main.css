@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
 
+html {
+  font-size: clamp(14px, 1.2vw, 18px);
+}
+
+section {
+  position: relative;
+  z-index: 1;
+  padding: clamp(60px, 10vw, 120px) clamp(20px, 5vw, 60px);
+}
+
 :root{
   --green-light: #39e3a0;
   --green: #39a87d;
@@ -54,6 +64,13 @@ section {
   margin:auto;
 }
 
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Hero/Main */
 .main{
   width: 100vw;
@@ -71,7 +88,7 @@ section {
 .main img{
   width:400px; height:200px;
   border-radius:12px;
-  object-fit:cover;
+  object-fit:scale-down;
   animation:float 5s ease-in-out infinite;
   border:2px solid var(--green-light);
 }
@@ -130,7 +147,8 @@ section {
 #cards .cards {
   display: flex;
   flex-wrap: wrap;
-  gap: 25px;
+  gap: clamp(30px, 3vw, 40px);
+  padding: 0 20px;
   justify-content: center;
   margin-top: 40px;
 }
@@ -331,29 +349,12 @@ footer{
     transform: translateY(6px);
 }
 
-/* Section before "cards" */
-section {
-  position: relative;
-  z-index: 1;
-}
-
-/* The #cards section overlaps the one above */
+/* Overlapping cards section */
 #cards {
+  display: flex;
+  flex-wrap: wrap;
   position: relative;
-  margin-top: -450px;  /* how much it overlaps upward */
-  z-index: 2;         /* makes it appear above the previous section */
+  z-index: 2;
+  margin-top: -10vw; /* scale overlap based on screen width */
+  padding-top: 5vw;  /* gives breathing space inside the section */
 }
-
-/* Optional: add a nice shadow so it looks layered */
-#cards::before {
-  content: "";
-  position: absolute;
-  top: -30px;
-  left: 0;
-  width: 100%;
-  height: 20px;
-  filter: blur(4px);
-  z-index: -1;
-}
-
-
