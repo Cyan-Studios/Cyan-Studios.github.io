@@ -69,7 +69,7 @@ section {
   overflow:hidden;
 }
 .main img{
-  width:300px; height:200px;
+  width:400px; height:200px;
   border-radius:12px;
   object-fit:cover;
   animation:float 5s ease-in-out infinite;
@@ -355,4 +355,5 @@ section {
   filter: blur(4px);
   z-index: -1;
 }
+
 
