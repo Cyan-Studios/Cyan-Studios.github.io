@@ -78,7 +78,7 @@ body {
     width: 450px;
     height: 225px;
     border-radius: 20px;
-    background: "https://raw.githubusercontent.com/Cyan-Studios/Cyan-Studios.github.io/refs/heads/main/astro/astro_hi.gif" center/cover no-repeat;
+    background: "https://framerusercontent.com/images/MrPXGlbegwZowvOeVWBV72w1SCY.gif?scale-down-to=512&width=800&height=640" center/cover no-repeat;
     box-shadow: 0 0 25px rgba(57, 168, 125, 0.8);
     flex-shrink: 0;
     scale: 1;
@@ -264,5 +264,6 @@ body {
         text-align: center;
     }
 }
+
 
 
