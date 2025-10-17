@@ -39,18 +39,6 @@
       ]
     },
     {
-      "name": "Admins",
-      "members": [
-        {
-          "id": "728621940318666843",
-          "username": "truncatebat",
-          "global_name": "TruncateBat",
-          "avatar": "https://cdn.discordapp.com/avatars/728621940318666843/97d40f2789c8d621361ac1a19693d1a2.png?size=512",
-          "role": "Admin"
-        }
-      ]
-    },
-    {
       "name": "Developers",
       "members": [
         {
@@ -66,6 +54,13 @@
           "global_name": "SoyGqbo",
           "avatar": "https://cdn.discordapp.com/avatars/873240010902618174/277ba7146ec2072e15997944e3533745.png?size=512",
           "role": "Developer"
+        },
+        {
+          "id": "728621940318666843",
+          "username": "truncatebat",
+          "global_name": "TruncateBat",
+          "avatar": "https://cdn.discordapp.com/avatars/728621940318666843/97d40f2789c8d621361ac1a19693d1a2.png?size=512",
+          "role": "Admin"
         }
       ]
     },
